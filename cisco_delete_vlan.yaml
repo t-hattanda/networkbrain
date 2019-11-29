@@ -1,0 +1,16 @@
+- hosts: cisco
+  gather_facts: no
+  sudo: false
+  connection: local
+
+  tasks:
+  - name: create
+    ios_config:
+      lines:
+       - no vlan 765
+      authorize: yes
+      auth_pass: "{{ enable_pass }}"
+      username: "{{ ansible_ssh_user }}"
+      password: "{{ ansible_ssh_pass }}"
+      host: "{{ inventory_hostname }}"
+
